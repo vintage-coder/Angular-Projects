@@ -1,0 +1,10 @@
+
+<div class="container">
+    <h1>Hi! {{ title }}</h1>
+    <p>You're now in Home Page!! {{ todaydate }}</p>
+    <p><a routerLink="/register">Register</a></p>
+    
+<p *ngIf="canShow">
+    This sectiom will be shown only when the *canShow* propery's value in the corresponding component is *true* </p> 
+
+</div>
