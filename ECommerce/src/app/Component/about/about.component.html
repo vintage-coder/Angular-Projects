@@ -1,0 +1,29 @@
+
+
+<div class="container">
+    <p>about works!</p>
+    <input type="text" [(ngModel)]="age"/>
+    <button (click)="GetAge()">Get Age</button>
+
+    <input [id]="myId" type="text" value="Gowthaman"/>
+    <input id="{{ myId }}" type="text" value="Gowthaman"/>
+    <h2 class="text-sucess">This is the about page</h2>
+
+    <h2 [class]="sucessResult">Class Binding 1</h2>
+
+    <h2 [class.text-danger]="hasError">Class Binding 2</h2>
+
+    <h2 [ngClass]="messageClass">Class Binding 3</h2>
+
+    <h2 [style.color]="hasError ? 'red' : 'gray'">Style Binding 1</h2>
+
+    <h2 [style.color]="highlightcolor">Style Binding 2</h2>
+
+    <h2 [ngStyle]="multistyle">Style Binding 3</h2>
+
+    <button (click)="onClick($event)">greet</button> <br/>
+
+    <button (click)="greetings='welcome to angular'">greet</button> <br/>
+
+    {{ greetings }}
+</div>

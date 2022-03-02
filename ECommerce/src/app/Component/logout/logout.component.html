@@ -1,0 +1,52 @@
+
+<div class="container">
+    <p>logout works!</p>
+
+    <p [ngStyle]="{'color': 'blue', 'font-size': '14px'}"> 
+        paragraph style is applied using ngStyle 
+     </p>
+
+     <ng-template [ngIf]=true> 
+        <div><h2>ng-template works!</h2></div> 
+     </ng-template>
+
+     <div> 
+        short date :- {{presentDate | date:'shortDate' | uppercase }} <br/>
+        Full date :- {{presentDate | date:'fullDate' | uppercase }} <br/> 
+        Formatted date:- {{presentDate | date:'M/dd/yyyy' | uppercase }} <br/> 
+        Hours and minutes:- {{presentDate | date:'h:mm' | uppercase }} 
+
+        short date :- {{presentDate | date:'shortDate' | lowercase }} <br/>
+        Full date :- {{presentDate | date:'fullDate' | lowercase }} <br/> 
+        Formatted date:- {{presentDate | date:'M/dd/yyyy' | lowercase }} <br/> 
+        Hours and minutes:- {{presentDate | date:'h:mm' | lowercase } 
+     </div>
+
+   
+
+    
+
+     <div style="text-align:center"> 
+        <p ngNonBindable>{{ jsonData }}</p> (1) 
+        <p>{{ jsonData }}</p> 
+        <p ngNonBindable>{{ jsonData | json }}</p> 
+        <p>{{ jsonData | json }}</p> 
+     </div> 
+
+    <div> 
+      <p> DigitCount Pipe </p> 
+      <h1>{{ digits | digitcount }}</h1> 
+    </div> 
+
+    <div>
+        <button (click)="CallLogService()">Call Service</button>
+    </div>
+
+    <h1> {{ title }}</h1>
+
+    <ul *ngFor="let student of studentList;">
+        <li>{{ student.stuId }}</li>
+        <li>{{ student.stuName }}</li>
+        <li>{{ student.stuAge }}</li>
+    </ul>
+</div>
