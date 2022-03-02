@@ -1,0 +1,131 @@
+<div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Customer Management System</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addCustomer" type="submit">Add Customer</button>
+          </div>
+        </div>
+    </nav>
+
+    <div class="row">
+      <div class="col-md-4">
+        <b> Search </b>
+      </div>
+      <div class="form-group col-md-4">
+        <input type="text" class="form-control"  placeholder="Enter Keyword for filter result" [(ngModel)]="searchKeyword">
+      </div>     
+    </div>
+
+ 
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+
+            <!-- <th scope="col"  >Customer ID</th>
+            <th scope="col" >First Name</th>
+            <th scope="col" >Last Name</th>
+            <th scope="col" >City</th>     -->
+
+            <th  (click)="sort('CustId')" >Customer ID</th>
+            <th  (click)="sort('FirstName')">First Name</th>
+            <th  (click)="sort('LastName')">Last Name</th>
+            <th  (click)="sort('City')">City</th>          
+          </tr>
+        </thead>
+        <tbody>
+          <!-- orderBy:sortingName:isDesc -->
+          <!-- filter:searchKeyword -->
+          <tr *ngFor="let customer of custList | filter:searchKeyword |orderBy:sortingName:isDesc ">
+            <td>{{customer.CustId}}</td>
+            <td>{{customer.FirstName}}</td>
+            <td>{{customer.LastName}}</td>
+            <td>{{customer.City}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editCustomer" (click)="editCustomer(customer)">Edit</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteCustomer(customer)">Delete</button>
+            </td>
+
+          </tr>
+          
+        </tbody>
+      </table>
+
+  
+  <!-- Add customer modal -->
+  <div class="modal fade" id="addCustomer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new Customer</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <form [formGroup]="custDetail">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First Name </label>
+                    <input type="text" formControlName="firstname" class="form-control" id="name" aria-describedby="emailHelp">
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Last Name </label>
+                  <input type="email" formControlName="lastname" class="form-control" id="email" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">City </label>
+                    <input type="text" formControlName="city" class="form-control" id="email" aria-describedby="emailHelp">
+                  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addCustomer()">Add Customer</button>
+                  </div>
+              </form>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Edit customer modal -->
+  <div class="modal fade" id="editCustomer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Customer Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <form [formGroup]="custDetail">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First Name </label>
+                    <input type="text" formControlName="firstname" class="form-control" id="name" aria-describedby="emailHelp">
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Last Name </label>
+                  <input type="email" formControlName="lastname" class="form-control" id="email" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">City </label>
+                    <input type="text" formControlName="city" class="form-control" id="email" aria-describedby="emailHelp">
+                  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success" (click)="updateCustomer()" data-bs-dismiss="modal">Update </button>
+                  </div>
+              </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div> 
